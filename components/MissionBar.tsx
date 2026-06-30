@@ -27,14 +27,14 @@ export function MissionBar({ mission }: MissionBarProps) {
         <div className="flex items-center gap-3">
           <Eyebrow color="mint">Today&apos;s Mission</Eyebrow>
           <span className="h-1 w-1 rounded-full bg-ink-disabled" />
-          <span className="font-mono text-xs tracking-[0.04em] text-ink-muted">{mission.dateLabel}</span>
+          <span className="font-sans text-xs tracking-[0.04em] text-ink-muted">{mission.dateLabel}</span>
         </div>
         {hasFocus ? (
-          <div className="mt-3 max-w-[600px] border-l-[3px] border-mint pl-[15px] font-sora text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-primary">
+          <div className="mt-3 max-w-[600px] border-l-[3px] border-mint pl-[15px] font-sans text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-primary">
             {mission.primaryFocus}
           </div>
         ) : (
-          <div className="mt-3 max-w-[600px] border-l-[3px] border-border pl-[15px] font-sora text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-muted italic">
+          <div className="mt-3 max-w-[600px] border-l-[3px] border-border pl-[15px] font-sans text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-muted italic">
             Set today&apos;s primary focus
           </div>
         )}

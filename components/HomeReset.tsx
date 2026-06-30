@@ -13,7 +13,7 @@ export function HomeReset({ chores, onToggle }: HomeResetProps) {
     <Card radius="section" className="p-[22px]">
       <div className="mb-[15px] flex items-center justify-between gap-2.5">
         <Eyebrow color="primary">Home Reset</Eyebrow>
-        <span className="rounded-chip border border-mint/32 bg-mint-soft px-[9px] py-1 font-mono text-[10px] font-medium tracking-[0.06em] text-mint uppercase">
+        <span className="eyebrow-sm rounded-chip border border-mint/32 bg-mint-soft px-[9px] py-1 text-mint">
           15-min
         </span>
       </div>

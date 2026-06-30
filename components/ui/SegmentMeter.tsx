@@ -16,7 +16,7 @@ interface SegmentMeterProps {
 export function SegmentMeter({ label, value, valueLabel, accent, max = 5 }: SegmentMeterProps) {
   return (
     <div className="flex items-center justify-between gap-3.5">
-      <span className="w-[52px] font-mono text-[11px] tracking-[0.07em] text-ink-muted uppercase">
+      <span className="eyebrow-sm w-[52px] text-ink-muted">
         {label}
       </span>
       <div className="flex gap-[5px]">

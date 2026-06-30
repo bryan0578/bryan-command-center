@@ -35,7 +35,7 @@ export function TouchCard({ touch, onToggle }: TouchCardProps) {
     >
       <div className="flex items-center justify-between gap-2">
         <span
-          className={`font-mono text-[11px] font-semibold tracking-[0.07em] uppercase ${categoryColorClass[touch.category]}`}
+          className={`eyebrow-sm ${categoryColorClass[touch.category]}`}
         >
           {categoryLabel[touch.category]}
         </span>

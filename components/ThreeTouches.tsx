@@ -20,11 +20,11 @@ export function ThreeTouches({ touches, onToggle }: ThreeTouchesProps) {
       <div className="mb-4 flex items-center justify-between gap-2.5">
         <div className="flex items-center gap-2.5">
           <Eyebrow color="primary">Today&apos;s 3 Touches</Eyebrow>
-          <span className="rounded-pill bg-mint px-[9px] py-[3px] font-mono text-[10px] font-semibold tracking-[0.06em] text-ink-inverse uppercase">
+          <span className="eyebrow-sm rounded-pill bg-mint px-[9px] py-[3px] text-ink-inverse">
             One each
           </span>
         </div>
-        <span className="font-mono text-[11px] text-ink-muted">
+        <span className="font-sans text-[11px] text-ink-muted">
           Career · Home · Creative — that&apos;s the rule
         </span>
       </div>

@@ -19,7 +19,7 @@ interface EyebrowProps extends HTMLAttributes<HTMLSpanElement> {
 export function Eyebrow({ color = "primary", className = "", children, ...rest }: EyebrowProps) {
   return (
     <span
-      className={`font-mono text-xs font-semibold tracking-[0.08em] uppercase ${colorClasses[color]} ${className}`}
+      className={`eyebrow ${colorClasses[color]} ${className}`}
       {...rest}
     >
       {children}

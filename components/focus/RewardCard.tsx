@@ -20,7 +20,7 @@ export function RewardCard({ rewardText, unlocked }: RewardCardProps) {
         </div>
       ) : unlocked ? (
         <div className="mt-[14px] rounded-[10px] border border-gold bg-gold/[0.08] p-4">
-          <div className="font-mono text-[11px] tracking-[0.07em] text-gold uppercase">
+          <div className="eyebrow-sm text-gold">
             Unlocked · you earned it
           </div>
           <div className="mt-[7px] text-[15px] font-semibold text-ink-primary">{rewardText}</div>
@@ -32,7 +32,7 @@ export function RewardCard({ rewardText, unlocked }: RewardCardProps) {
         <div className="mt-[14px] flex items-start gap-[13px] rounded-[10px] border border-dashed border-border-strong p-4">
           <div className="mt-0.5 h-[18px] w-[18px] flex-shrink-0 rounded-[5px] border-2 border-ink-muted" />
           <div>
-            <div className="font-mono text-[11px] tracking-[0.07em] text-ink-muted uppercase">
+            <div className="eyebrow-sm text-ink-muted">
               Locked · unlocks at 0:00
             </div>
             <div className="mt-1.5 text-[14.5px] text-ink-secondary">{rewardText}</div>

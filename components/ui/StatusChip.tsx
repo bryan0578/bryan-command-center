@@ -19,7 +19,7 @@ interface StatusChipProps extends HTMLAttributes<HTMLSpanElement> {
 export function StatusChip({ tone, className = "", children, ...rest }: StatusChipProps) {
   return (
     <span
-      className={`inline-block rounded-chip border px-[9px] py-[4px] font-mono text-[10px] font-semibold tracking-[0.05em] uppercase ${toneClasses[tone]} ${className}`}
+      className={`eyebrow-sm inline-block rounded-chip border px-[9px] py-[4px] ${toneClasses[tone]} ${className}`}
       {...rest}
     >
       {children}

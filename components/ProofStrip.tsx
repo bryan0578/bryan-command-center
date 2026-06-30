@@ -14,8 +14,8 @@ interface StatItemProps {
 function StatItem({ value, label, colorClass }: StatItemProps) {
   return (
     <div className="flex items-baseline gap-2">
-      <span className={`font-sora text-[23px] font-bold ${colorClass}`}>{value}</span>
-      <span className="font-mono text-[10px] tracking-[0.05em] text-ink-muted uppercase">{label}</span>
+      <span className={`font-sans text-[23px] font-bold ${colorClass}`}>{value}</span>
+      <span className="eyebrow-sm text-ink-muted">{label}</span>
     </div>
   );
 }
@@ -55,9 +55,9 @@ function TasksStatItem({ value, isOverridden, onSetOverride }: TasksStatItemProp
               setEditing(false);
             }
           }}
-          className="bc-focus-ring w-12 rounded-chip border border-gold bg-base font-sora text-[23px] font-bold text-gold"
+          className="bc-focus-ring w-12 rounded-chip border border-gold bg-base font-sans text-[23px] font-bold text-gold"
         />
-        <span className="font-mono text-[10px] tracking-[0.05em] text-ink-muted uppercase">Tasks finished</span>
+        <span className="eyebrow-sm text-ink-muted">Tasks finished</span>
       </div>
     );
   }
@@ -71,11 +71,11 @@ function TasksStatItem({ value, isOverridden, onSetOverride }: TasksStatItemProp
           setEditing(true);
         }}
         title="Click to set a manual total"
-        className="bc-focus-ring rounded-chip font-sora text-[23px] font-bold text-gold"
+        className="bc-focus-ring rounded-chip font-sans text-[23px] font-bold text-gold"
       >
         {value}
       </button>
-      <span className="font-mono text-[10px] tracking-[0.05em] text-ink-muted uppercase">Tasks finished</span>
+      <span className="eyebrow-sm text-ink-muted">Tasks finished</span>
       {isOverridden && (
         <button
           type="button"
@@ -103,7 +103,7 @@ export function ProofStrip({ proof, isTasksOverridden, onSetTasksOverride }: Pro
     <Card radius="card" className="flex flex-wrap items-center justify-between gap-[22px] px-[22px] py-[15px]">
       <div className="flex items-center gap-3">
         <Eyebrow color="gold">Proof of Movement</Eyebrow>
-        <span className="font-mono text-[11px] tracking-[0.04em] text-ink-muted">
+        <span className="font-sans text-[11px] tracking-[0.04em] text-ink-muted">
           {isZeroWeek
             ? "This week starts now."
             : `this week · showed up ${proof.daysShownUp} of ${proof.daysTotal} days`}

@@ -4,7 +4,7 @@
   Bryan Cash Design System tokens, ported to Tailwind v4's CSS-first theme.
   This repo has no tailwind.config.ts — @theme is the source of truth and
   every variable below becomes a utility (bg-canvas, text-ink-muted,
-  rounded-card, shadow-elevated, font-sora, etc).
+  rounded-card, shadow-elevated, font-sans, etc).
   Source: design_handoff_command_center/tokens/*.css
 */
 @theme {
@@ -48,10 +48,9 @@
   --color-draft: #8b5cf6;
   --color-draft-bg: #24103f;
 
-  /* Typography */
-  --font-sora: "Sora", "IBM Plex Sans", Manrope, Inter, system-ui, sans-serif;
-  --font-sans: "Inter", "IBM Plex Sans", Roboto, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Roboto Mono", "Source Code Pro", monospace;
+  /* Typography — Inter via next/font (--font-inter on <html>) */
+  --font-sans: var(--font-inter), "IBM Plex Sans", Roboto, system-ui, sans-serif;
+  --font-mono: var(--font-inter), "IBM Plex Sans", Roboto, system-ui, sans-serif;
 
   /* Radius */
   --radius-chip: 6px;
@@ -90,4 +89,22 @@ body {
 .bc-focus-ring:focus-visible {
   outline: none;
   box-shadow: var(--shadow-focus-ring);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow-sm {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }

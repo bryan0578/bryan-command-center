@@ -13,8 +13,8 @@ interface CountTileProps {
 function CountTile({ value, label, colorClass }: CountTileProps) {
   return (
     <div className="flex-1 rounded-row border border-border-subtle bg-base p-3.5 text-center">
-      <div className={`font-sora text-[26px] font-bold ${colorClass}`}>{value}</div>
-      <div className="mt-1 font-mono text-[10px] tracking-[0.06em] text-ink-muted uppercase">{label}</div>
+      <div className={`font-sans text-[26px] font-bold ${colorClass}`}>{value}</div>
+      <div className="eyebrow-sm mt-1 text-ink-muted">{label}</div>
     </div>
   );
 }
@@ -32,7 +32,7 @@ export function JobSearchTracker({ roles, jobCounts, nextAction }: JobSearchTrac
     <Card radius="section" className="p-6">
       <div className="flex items-center justify-between gap-3">
         <Eyebrow color="aqua">Job Search Tracker</Eyebrow>
-        <span className="font-mono text-[11px] tracking-[0.05em] text-ink-muted uppercase">
+        <span className="eyebrow-sm text-ink-muted">
           Career progress
         </span>
       </div>
