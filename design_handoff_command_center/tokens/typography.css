@@ -1,0 +1,62 @@
+/* ============================================================
+   Typography tokens — from BC-Typography-System v1.0 §5.
+   Sora = display/headings · Inter = body/UI · JetBrains Mono = code.
+   ============================================================ */
+
+:root {
+  /* ---- Font families ---- */
+  --bc-font-heading: "Sora", "IBM Plex Sans", Manrope, Inter, system-ui, sans-serif;
+  --bc-font-body:    "Inter", "IBM Plex Sans", Roboto, system-ui, sans-serif;
+  --bc-font-mono:    "JetBrains Mono", "Roboto Mono", "Source Code Pro", monospace;
+
+  /* ---- Font sizes (desktop) ---- */
+  --bc-text-hero:       4rem;      /* 64px — Display / Hero */
+  --bc-text-page-title: 3rem;      /* 48px */
+  --bc-text-h1:         2.5rem;    /* 40px */
+  --bc-text-h2:         2rem;      /* 32px */
+  --bc-text-h3:         1.5rem;    /* 24px */
+  --bc-text-h4:         1.25rem;   /* 20px */
+  --bc-text-body-lg:    1.25rem;   /* 20px */
+  --bc-text-body:       1.0625rem; /* 17px */
+  --bc-text-body-sm:    0.9375rem; /* 15px */
+  --bc-text-caption:    0.8125rem; /* 13px */
+  --bc-text-label:      0.75rem;   /* 12px — eyebrow / kicker */
+  --bc-text-code:       0.875rem;  /* 14px */
+
+  /* ---- Line heights ---- */
+  --bc-leading-display: 1;
+  --bc-leading-heading: 1.15;
+  --bc-leading-body:    1.65;
+  --bc-leading-code:    1.65;
+  --bc-leading-label:   1.2;
+
+  /* ---- Letter spacing ---- */
+  --bc-tracking-display: -0.04em;
+  --bc-tracking-heading: -0.025em;
+  --bc-tracking-body:     0em;
+  --bc-tracking-label:    0.08em;
+  --bc-tracking-code:    -0.01em;
+
+  /* ---- Font weights ---- */
+  --bc-weight-regular:  400;
+  --bc-weight-medium:   500;
+  --bc-weight-semibold: 600;
+  --bc-weight-650:      650; /* H2/H3/Label — snaps to 600 if variable axis unused */
+  --bc-weight-bold:     700;
+
+  /* ---- Measure ---- */
+  --bc-measure-prose: 68ch;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --bc-text-hero:       2.5rem;    /* 40px */
+    --bc-text-page-title: 2.125rem;  /* 34px */
+    --bc-text-h1:         1.875rem;  /* 30px */
+    --bc-text-h2:         1.625rem;  /* 26px */
+    --bc-text-h3:         1.375rem;  /* 22px */
+    --bc-text-h4:         1.125rem;  /* 18px */
+    --bc-text-body-lg:    1.125rem;  /* 18px */
+    --bc-text-body:       1rem;      /* 16px */
+  }
+}

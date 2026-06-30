@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/bryan-cash-design-system-7439f005-8c0b-4041-9ca0-6eac6df96e06/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/bryan-cash-design-system-7439f005-8c0b-4041-9ca0-6eac6df96e06/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/bryan-cash-design-system-7439f005-8c0b-4041-9ca0-6eac6df96e06/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/bryan-cash-design-system-7439f005-8c0b-4041-9ca0-6eac6df96e06/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/bryan-cash-design-system-7439f005-8c0b-4041-9ca0-6eac6df96e06/styles.css">
+  <script src="_ds/bryan-cash-design-system-7439f005-8c0b-4041-9ca0-6eac6df96e06/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bc-surface-canvas); }
+    @keyframes bcpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  </style>
+</helmet>
+
+<div data-screen-label="Command Center" style="background:var(--bc-surface-canvas);min-height:100vh;padding:36px 32px 48px;box-sizing:border-box;font-family:var(--bc-font-body);color:var(--bc-text-primary);">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:18px;">
+
+    <!-- ============ MISSION BAR (compact) — what matters today ============ -->
+    <div style="background:var(--bc-surface-elevated);border:1px solid var(--bc-border-strong);border-radius:16px;padding:20px 24px;box-shadow:0 6px 20px rgba(0,0,0,0.28);display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between;">
+      <div style="flex:1;min-width:440px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-brand-primary);">Today's Mission</span>
+          <span style="width:4px;height:4px;border-radius:50%;background:var(--bc-text-disabled);"></span>
+          <span style="font-family:var(--bc-font-mono);font-size:12px;letter-spacing:0.04em;color:var(--bc-text-muted);">Tuesday · June 30, 2026</span>
+        </div>
+        <div style="border-left:3px solid var(--bc-brand-primary);padding-left:15px;margin-top:12px;font-family:var(--bc-font-heading);font-size:21px;line-height:1.35;font-weight:650;letter-spacing:-0.02em;color:var(--bc-text-primary);max-width:600px;">Ship one screen of the PrettyWise landing page. Done is enough.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:268px;background:var(--bc-surface-base);border:1px solid var(--bc-border-default);border-radius:12px;padding:15px 16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;">
+          <span style="font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--bc-text-muted);width:52px;">Energy</span>
+          <div style="display:flex;gap:5px;">
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-brand-primary);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-brand-primary);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-brand-primary);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-border-default);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-border-default);"></span>
+          </div>
+          <span style="font-size:13px;color:var(--bc-text-secondary);width:50px;text-align:right;">Medium</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;">
+          <span style="font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--bc-text-muted);width:52px;">Stress</span>
+          <div style="display:flex;gap:5px;">
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-brand-secondary);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-brand-secondary);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-border-default);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-border-default);"></span>
+            <span style="width:21px;height:6px;border-radius:999px;background:var(--bc-border-default);"></span>
+          </div>
+          <span style="font-size:13px;color:var(--bc-text-secondary);width:50px;text-align:right;">Low</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PROOF STRIP (slim) — progress made ============ -->
+    <div style="background:var(--bc-surface-card);border:1px solid var(--bc-border-default);border-radius:12px;padding:15px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:22px;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-brand-premium);">Proof of Movement</span>
+        <span style="font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.04em;color:var(--bc-text-muted);">this week · showed up 5 of 5 days</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:baseline;">
+        <div style="display:flex;align-items:baseline;gap:8px;"><span style="font-family:var(--bc-font-heading);font-size:23px;font-weight:700;color:var(--bc-brand-secondary);">4</span><span style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);">Career</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;"><span style="font-family:var(--bc-font-heading);font-size:23px;font-weight:700;color:var(--bc-brand-primary);">11</span><span style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);">Chores</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;"><span style="font-family:var(--bc-font-heading);font-size:23px;font-weight:700;color:var(--bc-brand-creative);">3</span><span style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);">Creative blocks</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;"><span style="font-family:var(--bc-font-heading);font-size:23px;font-weight:700;color:var(--bc-brand-premium);">{{ proofTotal }}</span><span style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);">Tasks finished</span></div>
+      </div>
+    </div>
+
+    <!-- ============ PRIMARY ACTION ROW — what to do first + career ============ -->
+    <div style="display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,0.96fr);gap:18px;align-items:start;">
+
+      <!-- LEFT: Focus Block hero + connected Reward -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <!-- First Focus Block (hero) -->
+        <div style="background:var(--bc-surface-elevated);border:1px solid var(--bc-border-strong);border-radius:14px;padding:24px;box-shadow:0 6px 20px rgba(0,0,0,0.28);">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-brand-secondary);">First Focus Block</span>
+              <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-text-inverse);background:var(--bc-brand-primary);border-radius:999px;padding:3px 9px;">Do this first</span>
+            </div>
+            <span style="font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-text-muted);">Responsibility</span>
+          </div>
+          <div style="font-size:17px;font-weight:600;color:var(--bc-text-primary);margin-top:15px;">Finish &amp; submit the SAP Fiori Developer application</div>
+          <x-import component-from-global-scope="BryanCashDesignSystem_7439f0.Callout" type="technical" label="Definition of done" hint-size="100%,auto" style="margin-top:13px;">Application sent with resume attached. Not polished — submitted. That's the bar.</x-import>
+          <div style="margin-top:20px;display:flex;align-items:center;gap:20px;">
+            <div style="font-family:var(--bc-font-mono);font-size:54px;font-weight:600;letter-spacing:-0.02em;color:var(--bc-text-primary);line-height:1;">{{ t.time }}</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:7px;font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--bc-text-muted);margin-bottom:9px;">
+                <sc-if value="{{ t.running }}" hint-placeholder-val="{{ false }}"><span style="width:7px;height:7px;border-radius:50%;background:var(--bc-brand-primary);animation:bcpulse 1.4s ease-in-out infinite;"></span></sc-if>
+                <span>{{ t.totalLabel }}</span>
+              </div>
+              <div style="height:8px;border-radius:999px;background:var(--bc-border-default);overflow:hidden;">
+                <div style="height:100%;border-radius:999px;background:var(--bc-brand-primary);width:{{ t.pct }};transition:width 1000ms linear;"></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <x-import component-from-global-scope="BryanCashDesignSystem_7439f0.Button" variant="primary" onClick="{{ t.toggle }}" hint-size="auto,46px" style="flex:1;font-size:15px;">{{ t.btn }}</x-import>
+            <x-import component-from-global-scope="BryanCashDesignSystem_7439f0.Button" variant="secondary" onClick="{{ t.reset }}" hint-size="auto,46px">Reset</x-import>
+          </div>
+        </div>
+
+        <!-- connector -->
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;">
+          <span style="font-family:var(--bc-font-mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-text-muted);">Finish the block to unlock your reward</span>
+          <span style="flex:1;height:1px;background:var(--bc-border-subtle);"></span>
+          <span style="color:var(--bc-brand-premium);font-size:13px;">↓</span>
+        </div>
+
+        <!-- Reward -->
+        <div style="background:var(--bc-surface-card);border:1px solid var(--bc-border-default);border-radius:14px;padding:22px;">
+          <div style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-brand-premium);">Reward — after the block</div>
+          <sc-if value="{{ t.locked }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:14px;border:1px dashed var(--bc-border-strong);border-radius:10px;padding:16px;display:flex;gap:13px;align-items:flex-start;">
+              <div style="width:18px;height:18px;border:2px solid var(--bc-text-muted);border-radius:5px;flex-shrink:0;margin-top:2px;"></div>
+              <div>
+                <div style="font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--bc-text-muted);">Locked · unlocks at 0:00</div>
+                <div style="font-size:14.5px;color:var(--bc-text-secondary);margin-top:6px;">30 minutes on Caleb Ash sound design. No rules, just play.</div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ t.unlocked }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px;border:1px solid var(--bc-brand-premium);background:rgba(214,180,106,0.08);border-radius:10px;padding:16px;">
+              <div style="font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--bc-brand-premium);">Unlocked · you earned it</div>
+              <div style="font-size:15px;font-weight:600;color:var(--bc-text-primary);margin-top:7px;">30 minutes on Caleb Ash sound design. No rules, just play.</div>
+              <x-import component-from-global-scope="BryanCashDesignSystem_7439f0.Button" variant="primary" size="sm" hint-size="auto,38px" style="margin-top:13px;">Start reward →</x-import>
+            </div>
+          </sc-if>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Job Search Tracker (prominent) -->
+      <div style="background:var(--bc-surface-card);border:1px solid var(--bc-border-default);border-radius:14px;padding:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-brand-secondary);">Job Search Tracker</span>
+          <span style="font-family:var(--bc-font-mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);">Career progress</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:18px;">
+          <div style="flex:1;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-family:var(--bc-font-heading);font-size:26px;font-weight:700;color:var(--bc-text-primary);">8</div>
+            <div style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-text-muted);margin-top:4px;">Saved</div>
+          </div>
+          <div style="flex:1;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-family:var(--bc-font-heading);font-size:26px;font-weight:700;color:var(--bc-brand-secondary);">5</div>
+            <div style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-text-muted);margin-top:4px;">Applied</div>
+          </div>
+          <div style="flex:1;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-family:var(--bc-font-heading);font-size:26px;font-weight:700;color:var(--bc-status-warning);">2</div>
+            <div style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-text-muted);margin-top:4px;">Follow-ups</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <div><div style="font-size:14px;font-weight:600;color:var(--bc-text-primary);">SAP</div><div style="font-size:12px;color:var(--bc-text-muted);">SAPUI5 / Fiori Developer</div></div>
+            <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-brand-secondary);background:var(--bc-status-info-bg);border:1px solid rgba(56,217,242,0.3);border-radius:6px;padding:4px 9px;">Applied · today</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <div><div style="font-size:14px;font-weight:600;color:var(--bc-text-primary);">Accenture</div><div style="font-size:12px;color:var(--bc-text-muted);">SAP BTP Application Developer</div></div>
+            <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-status-warning);background:var(--bc-status-warning-bg);border:1px solid rgba(245,158,11,0.3);border-radius:6px;padding:4px 9px;">Follow up</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <div><div style="font-size:14px;font-weight:600;color:var(--bc-text-primary);">Salesforce</div><div style="font-size:12px;color:var(--bc-text-muted);">Salesforce UI Developer</div></div>
+            <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-brand-secondary);background:var(--bc-status-info-bg);border:1px solid rgba(56,217,242,0.3);border-radius:6px;padding:4px 9px;">Applied · 3d</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <div><div style="font-size:14px;font-weight:600;color:var(--bc-text-primary);">Workday</div><div style="font-size:12px;color:var(--bc-text-muted);">Enterprise Frontend Engineer</div></div>
+            <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);background:var(--bc-surface-subtle);border:1px solid var(--bc-border-default);border-radius:6px;padding:4px 9px;">Saved</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <div><div style="font-size:14px;font-weight:600;color:var(--bc-text-primary);">Vercel</div><div style="font-size:12px;color:var(--bc-text-muted);">React / Next.js Developer</div></div>
+            <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);background:var(--bc-surface-subtle);border:1px solid var(--bc-border-default);border-radius:6px;padding:4px 9px;">Saved</span>
+          </div>
+        </div>
+        <div style="margin-top:15px;display:flex;align-items:center;gap:13px;background:var(--bc-brand-soft);border:1px solid rgba(94,242,194,0.28);border-radius:10px;padding:13px 15px;">
+          <span style="font-family:var(--bc-font-mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--bc-brand-primary);flex-shrink:0;">Next →</span>
+          <span style="font-size:13.5px;color:var(--bc-text-secondary);line-height:1.5;">Follow up with the Accenture recruiter on the SAP BTP role — it's been 5 days. One short email.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ TODAY'S 3 TOUCHES — elevated band, sits with the focus block ============ -->
+    <div style="background:var(--bc-surface-elevated);border:1px solid var(--bc-border-strong);border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,0.28);">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-text-primary);">Today's 3 Touches</span>
+          <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-text-inverse);background:var(--bc-brand-primary);border-radius:999px;padding:3px 9px;">One each</span>
+        </div>
+        <span style="font-family:var(--bc-font-mono);font-size:11px;color:var(--bc-text-muted);">Career · Home · Creative — that's the rule</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;">
+        <sc-for list="{{ touches }}" as="t" hint-placeholder-count="3">
+          <div onClick="{{ t.toggle }}" style="display:flex;flex-direction:column;gap:12px;padding:16px;background:var(--bc-surface-base);border:1px solid var(--bc-border-default);border-radius:11px;cursor:pointer;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <span style="font-family:var(--bc-font-mono);font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:{{ t.accent }};">{{ t.cat }}</span>
+              <sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}"><span style="width:22px;height:22px;border-radius:6px;background:var(--bc-brand-primary);color:var(--bc-text-inverse);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✓</span></sc-if>
+              <sc-if value="{{ t.pending }}" hint-placeholder-val="{{ true }}"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--bc-border-strong);background:var(--bc-surface-card);flex-shrink:0;"></span></sc-if>
+            </div>
+            <div style="font-size:14.5px;color:var(--bc-text-secondary);line-height:1.45;">{{ t.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ============ SUPPORTING ROW — Home Reset · Creative Projects ============ -->
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start;">
+
+      <!-- Home Reset -->
+      <div style="background:var(--bc-surface-card);border:1px solid var(--bc-border-default);border-radius:14px;padding:22px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;">
+          <span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-text-primary);">Home Reset</span>
+          <span style="font-family:var(--bc-font-mono);font-size:10px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--bc-brand-primary);background:var(--bc-brand-soft);border:1px solid rgba(94,242,194,0.32);border-radius:6px;padding:4px 9px;">15-min</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ chores }}" as="c" hint-placeholder-count="5">
+            <div onClick="{{ c.toggle }}" style="display:flex;align-items:center;gap:11px;padding:11px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;cursor:pointer;">
+              <sc-if value="{{ c.done }}" hint-placeholder-val="{{ false }}"><span style="width:20px;height:20px;border-radius:6px;background:var(--bc-brand-primary);color:var(--bc-text-inverse);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✓</span></sc-if>
+              <sc-if value="{{ c.pending }}" hint-placeholder-val="{{ true }}"><span style="width:20px;height:20px;border-radius:6px;border:1px solid var(--bc-border-strong);background:var(--bc-surface-card);flex-shrink:0;"></span></sc-if>
+              <span style="font-size:13px;color:var(--bc-text-secondary);">{{ c.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- Creative Projects -->
+      <div style="background:var(--bc-surface-card);border:1px solid var(--bc-border-default);border-radius:14px;padding:22px;">
+        <div style="margin-bottom:15px;"><span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-brand-creative);">Creative Projects</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <span style="font-size:13.5px;font-weight:600;color:var(--bc-text-primary);">Caleb Ash</span>
+            <span style="font-family:var(--bc-font-mono);font-size:9.5px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-brand-creative);background:var(--bc-status-draft-bg);border:1px solid rgba(167,139,250,0.32);border-radius:6px;padding:4px 8px;">Draft</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <span style="font-size:13.5px;font-weight:600;color:var(--bc-text-primary);">PrettyWise</span>
+            <span style="font-family:var(--bc-font-mono);font-size:9.5px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-brand-primary);background:var(--bc-brand-soft);border:1px solid rgba(94,242,194,0.32);border-radius:6px;padding:4px 8px;">Active</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <span style="font-size:13.5px;font-weight:600;color:var(--bc-text-primary);">Blog / content</span>
+            <span style="font-family:var(--bc-font-mono);font-size:9.5px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-text-muted);background:var(--bc-surface-subtle);border:1px solid var(--bc-border-default);border-radius:6px;padding:4px 8px;">Idle</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 13px;background:var(--bc-surface-base);border:1px solid var(--bc-border-subtle);border-radius:9px;">
+            <span style="font-size:13.5px;font-weight:600;color:var(--bc-text-primary);">Freelance / client</span>
+            <span style="font-family:var(--bc-font-mono);font-size:9.5px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--bc-status-info);background:var(--bc-status-info-bg);border:1px solid rgba(59,130,246,0.3);border-radius:6px;padding:4px 8px;">Waiting</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ NOT TODAY — what you're intentionally not doing ============ -->
+    <sc-if value="{{ showNotToday }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--bc-surface-base);border:1px dashed var(--bc-border-default);border-radius:14px;padding:22px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <span style="font-family:var(--bc-font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--bc-text-muted);">Not Today</span>
+        <span style="font-size:12.5px;color:var(--bc-text-disabled);font-style:italic;">Parked on purpose — not forgotten, just not today.</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:15px;">
+        <span style="font-size:13px;color:var(--bc-text-muted);background:var(--bc-surface-card);border:1px solid var(--bc-border-subtle);border-radius:999px;padding:8px 15px;">Refactor the portfolio site</span>
+        <span style="font-size:13px;color:var(--bc-text-muted);background:var(--bc-surface-card);border:1px solid var(--bc-border-subtle);border-radius:999px;padding:8px 15px;">Research a new CRM</span>
+        <span style="font-size:13px;color:var(--bc-text-muted);background:var(--bc-surface-card);border:1px solid var(--bc-border-subtle);border-radius:999px;padding:8px 15px;">Reorganize the whole Notion</span>
+        <span style="font-size:13px;color:var(--bc-text-muted);background:var(--bc-surface-card);border:1px solid var(--bc-border-subtle);border-radius:999px;padding:8px 15px;">Reply to the non-urgent email backlog</span>
+        <span style="font-size:13px;color:var(--bc-text-muted);background:var(--bc-surface-card);border:1px solid var(--bc-border-subtle);border-radius:999px;padding:8px 15px;">Plan the Q3 content calendar</span>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;blockMinutes&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:20,&quot;min&quot;:5,&quot;max&quot;:45,&quot;step&quot;:5,&quot;unit&quot;:&quot;min&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Focus&quot;},&quot;showNotToday&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;proofTotal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:18,&quot;min&quot;:0,&quot;max&quot;:99,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Proof&quot;}}">
+class Component extends DCLogic {
+  state = {
+    checks: { 't-home': true, 'c1': true, 'c4': true },
+    t: { elapsed: 0, running: false },
+  };
+
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState((s) => {
+        const total = this.totalSeconds();
+        const c = s.t;
+        if (c.running && c.elapsed < total) {
+          const e = c.elapsed + 1;
+          return { t: { elapsed: e, running: e < total } };
+        }
+        return {};
+      });
+    }, 1000);
+  }
+
+  componentWillUnmount() { clearInterval(this._iv); }
+
+  totalSeconds() {
+    const m = Number(this.props.blockMinutes);
+    return (Number.isFinite(m) && m > 0 ? m : 20) * 60;
+  }
+
+  fmt(sec) {
+    const m = Math.floor(sec / 60), x = sec % 60;
+    return m + ':' + String(x).padStart(2, '0');
+  }
+
+  toggleCheck(id) {
+    this.setState((s) => ({ checks: { ...s.checks, [id]: !s.checks[id] } }));
+  }
+
+  mkTimer() {
+    const total = this.totalSeconds();
+    const el = Math.min(this.state.t.elapsed, total);
+    const remaining = total - el;
+    const done = remaining <= 0;
+    const mins = Math.round(total / 60);
+    return {
+      time: this.fmt(Math.max(0, remaining)),
+      pct: (total ? (el / total) * 100 : 0) + '%',
+      running: this.state.t.running && !done,
+      done,
+      unlocked: done,
+      locked: !done,
+      totalLabel: mins + '-minute block',
+      btn: done ? 'Block complete — nice' : (this.state.t.running ? 'Pause block' : (el > 0 ? 'Resume block' : 'Start ' + mins + '-min block')),
+      toggle: () => this.setState((s) => {
+        const tot = this.totalSeconds();
+        if (s.t.elapsed >= tot) return {};
+        return { t: { ...s.t, running: !s.t.running } };
+      }),
+      reset: () => this.setState({ t: { elapsed: 0, running: false } }),
+    };
+  }
+
+  mkList(items) {
+    return items.map((it) => {
+      const done = !!this.state.checks[it.id];
+      return { ...it, done, pending: !done, toggle: () => this.toggleCheck(it.id) };
+    });
+  }
+
+  renderVals() {
+    const touches = [
+      { id: 't-career', cat: 'Career', accent: 'var(--bc-brand-secondary)', text: 'Submit the SAPUI5 / Fiori Developer application to SAP' },
+      { id: 't-home', cat: 'Home / Admin', accent: 'var(--bc-brand-primary)', text: 'Reset the kitchen + start a laundry load' },
+      { id: 't-creative', cat: 'Creative', accent: 'var(--bc-brand-creative)', text: 'Write 200 words for the Caleb Ash devlog' },
+    ];
+    const chores = [
+      { id: 'c1', text: 'Kitchen counter + dishes' },
+      { id: 'c2', text: 'Switch the laundry over' },
+      { id: 'c3', text: 'Desk reset — clear & wipe' },
+      { id: 'c4', text: 'Trash + recycling out' },
+      { id: 'c5', text: 'Open & sort the mail' },
+    ];
+    return {
+      t: this.mkTimer(),
+      touches: this.mkList(touches),
+      chores: this.mkList(chores),
+      showNotToday: this.props.showNotToday ?? true,
+      proofTotal: this.props.proofTotal ?? 18,
+    };
+  }
+}
+</script>
+</body>
+</html>

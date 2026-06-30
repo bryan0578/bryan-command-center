@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Bryan Cash Design System tokens, ported to Tailwind v4's CSS-first theme.
+  This repo has no tailwind.config.ts — @theme is the source of truth and
+  every variable below becomes a utility (bg-canvas, text-ink-muted,
+  rounded-card, shadow-elevated, font-sora, etc).
+  Source: design_handoff_command_center/tokens/*.css
+*/
+@theme {
+  /* Surfaces (step up in lightness) */
+  --color-canvas: #070a0d;
+  --color-base: #0b1117;
+  --color-card: #101923;
+  --color-elevated: #17212d;
+  --color-subtle: #243241;
+
+  /* Text */
+  --color-ink-primary: #f7fafc;
+  --color-ink-secondary: #cbd5e1;
+  --color-ink-muted: #8a97a8;
+  --color-ink-disabled: #526173;
+  --color-ink-inverse: #0b1117;
+
+  /* Brand accents */
+  --color-mint: #5ef2c2;
+  --color-mint-soft: #0f2e28;
+  --color-aqua: #38d9f2;
+  --color-gold: #d6b46a;
+  --color-violet: #a78bfa;
+
+  /* Borders */
+  --color-border-subtle: #17212d;
+  --color-border: #243241;
+  --color-border-strong: #334155;
+  --color-border-accent: #5ef2c2;
+  --color-border-focus: #38d9f2;
+
+  /* Status (functional only, always labeled) */
+  --color-success: #22c55e;
+  --color-success-bg: #052e1a;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #3a2503;
+  --color-error: #ef4444;
+  --color-error-bg: #3b0a0a;
+  --color-info: #3b82f6;
+  --color-info-bg: #071d3a;
+  --color-draft: #8b5cf6;
+  --color-draft-bg: #24103f;
+
+  /* Typography */
+  --font-sora: "Sora", "IBM Plex Sans", Manrope, Inter, system-ui, sans-serif;
+  --font-sans: "Inter", "IBM Plex Sans", Roboto, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Roboto Mono", "Source Code Pro", monospace;
+
+  /* Radius */
+  --radius-chip: 6px;
+  --radius-btn: 9px;
+  --radius-row: 11px;
+  --radius-card: 12px;
+  --radius-section: 14px;
+  --radius-panel: 16px;
+  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-elevated: 0 6px 20px rgba(0, 0, 0, 0.28);
+  --shadow-focus-ring: 0 0 0 3px rgba(56, 217, 242, 0.18);
+
+  /* Motion */
+  --ease-bc: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-bc-pulse: bcpulse 1.4s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes bcpulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-ink-primary);
+}
+
+/* Shared aqua focus ring for keyboard nav on interactive rows/buttons */
+.bc-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
 }

@@ -1,0 +1,43 @@
+/* ============================================================
+   Spacing, radius, shadow & motion tokens.
+   Spacing follows a 4px base grid. Radii and shadows are tuned for
+   the "polished software" surface hierarchy of the dark theme.
+   (Not enumerated verbatim in the source docs — derived to match the
+   existing brand HTML, which uses 7–13px radii and soft dark shadows.)
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (4px base) ---- */
+  --bc-space-1:  4px;
+  --bc-space-2:  8px;
+  --bc-space-3:  12px;
+  --bc-space-4:  16px;
+  --bc-space-5:  20px;
+  --bc-space-6:  24px;
+  --bc-space-8:  32px;
+  --bc-space-10: 40px;
+  --bc-space-12: 48px;
+  --bc-space-16: 64px;
+  --bc-space-20: 80px;
+  --bc-space-24: 96px;
+
+  /* ---- Radius ---- */
+  --bc-radius-xs:   4px;  /* inline code, small chips */
+  --bc-radius-sm:   6px;  /* badges, tags */
+  --bc-radius-md:   9px;  /* buttons, inputs */
+  --bc-radius-lg:   12px; /* cards */
+  --bc-radius-xl:   16px; /* large panels, modals */
+  --bc-radius-pill: 999px;
+
+  /* ---- Shadows (dark-theme tuned — soft, low-spread) ---- */
+  --bc-shadow-sm:   0 1px 2px rgba(0,0,0,0.30);
+  --bc-shadow-md:   0 6px 20px rgba(0,0,0,0.28);
+  --bc-shadow-lg:   0 12px 36px rgba(0,0,0,0.34);
+  --bc-shadow-glow: 0 0 14px rgba(94,242,194,0.45); /* mint glow — sparingly */
+  --bc-ring-focus:  0 0 0 3px rgba(56,217,242,0.18); /* aqua focus ring */
+
+  /* ---- Motion ---- */
+  --bc-ease:        cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --bc-duration-fast: 120ms; /* @kind other */
+  --bc-duration:      180ms; /* @kind other */
+}

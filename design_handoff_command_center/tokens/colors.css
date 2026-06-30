@@ -1,0 +1,107 @@
+/* ============================================================
+   Color tokens — token names match BC-Color-System v2.0 §8.1 1:1.
+   Dark mode is :root (the default & primary theme).
+   Light mode (.light-mode) is for documents / PDFs / lead magnets only.
+   Usage ratio target: ~70% neutral surfaces · ~20% structured ·
+   ~7% mint/aqua · ~3% gold/violet/status.
+   ============================================================ */
+
+:root {
+  /* ---- Foundation palette (escape hatch — prefer semantic tokens) ---- */
+  --bc-void:       #070A0D;
+  --bc-dark:       #0B1117;
+  --bc-navy:       #101923;
+  --bc-slate:      #17212D;
+  --bc-steel:      #243241;
+  --bc-white:      #F7FAFC;
+  --bc-mist:       #CBD5E1;
+  --bc-cloud:      #8A97A8;
+  --bc-mint:       #5EF2C2; /* Cash Mint */
+  --bc-deep-mint:  #0F766E;
+  --bc-aqua:       #38D9F2; /* Aqua Signal */
+  --bc-gold:       #D6B46A; /* Architecture Gold */
+  --bc-violet:     #A78BFA; /* Creative Violet */
+  --bc-frost:      #D9FFF3;
+
+  /* ---- Surfaces ---- */
+  --bc-surface-canvas:   #070A0D; /* main page background */
+  --bc-surface-base:     #0B1117; /* section background, code block bg */
+  --bc-surface-card:     #101923; /* cards, post previews */
+  --bc-surface-elevated: #17212D; /* hover, modals, featured cards */
+  --bc-surface-subtle:   #243241; /* muted panels, code-block bg */
+
+  /* ---- Text ---- */
+  --bc-text-primary:   #F7FAFC; /* headlines, high-priority UI text */
+  --bc-text-secondary: #CBD5E1; /* body copy, descriptions */
+  --bc-text-muted:     #8A97A8; /* captions, metadata, timestamps */
+  --bc-text-disabled:  #526173; /* disabled UI text */
+  --bc-text-accent:    #5EF2C2; /* links, inline emphasis */
+  --bc-text-inverse:   #0B1117; /* text on mint/accent surfaces */
+
+  /* ---- Brand accents ---- */
+  --bc-brand-primary:   #5EF2C2; /* Cash Mint — primary action */
+  --bc-brand-secondary: #38D9F2; /* Aqua Signal — structure, technical */
+  --bc-brand-premium:   #D6B46A; /* Architecture Gold — authority, max 2–3/page */
+  --bc-brand-creative:  #A78BFA; /* Creative Violet — AI/creative only */
+  --bc-brand-soft:      #0F2E28; /* tinted mint surface for badges/callouts */
+
+  /* ---- Borders ---- */
+  --bc-border-subtle:  #17212D; /* low-contrast dividers */
+  --bc-border-default: #243241; /* standard card/UI borders */
+  --bc-border-strong:  #334155; /* high-emphasis borders */
+  --bc-border-accent:  #5EF2C2; /* active/selected border */
+  --bc-border-focus:   #38D9F2; /* focus rings, keyboard nav */
+
+  /* ---- Status (functional only — never decorative) ---- */
+  --bc-status-success:    #22C55E;
+  --bc-status-success-bg: #052E1A;
+  --bc-status-warning:    #F59E0B;
+  --bc-status-warning-bg: #3A2503;
+  --bc-status-error:      #EF4444;
+  --bc-status-error-bg:   #3B0A0A;
+  --bc-status-info:       #3B82F6;
+  --bc-status-info-bg:    #071D3A;
+  --bc-status-draft:      #8B5CF6;
+  --bc-status-draft-bg:   #24103F;
+}
+
+/* ---- Light mode — documents / PDFs / lead magnets only ----
+   Apply via a .light-mode class. Do NOT bind to prefers-color-scheme;
+   dark is intentional, not a system-preference default. ---- */
+.light-mode {
+  --bc-surface-canvas:   #F7FAFC;
+  --bc-surface-base:     #FFFFFF;
+  --bc-surface-card:     #F8FAFC;
+  --bc-surface-elevated: #FFFFFF;
+  --bc-surface-subtle:   #EEF2F7;
+
+  --bc-text-primary:   #0B1117;
+  --bc-text-secondary: #334155;
+  --bc-text-muted:     #64748B;
+  --bc-text-disabled:  #94A3B8;
+  --bc-text-accent:    #0F766E; /* Deep Mint replaces Cash Mint in light mode */
+  --bc-text-inverse:   #F7FAFC;
+
+  --bc-brand-primary:   #0F766E; /* Deep Mint */
+  --bc-brand-secondary: #0891B2;
+  --bc-brand-premium:   #A16207;
+  --bc-brand-creative:  #7C3AED;
+  --bc-brand-soft:      #D9FFF3; /* Mint Frost */
+
+  --bc-border-subtle:  #E2E8F0;
+  --bc-border-default: #CBD5E1;
+  --bc-border-strong:  #94A3B8;
+  --bc-border-accent:  #14B8A6;
+  --bc-border-focus:   #0891B2;
+
+  --bc-status-success:    #15803D;
+  --bc-status-success-bg: #DCFCE7;
+  --bc-status-warning:    #B45309;
+  --bc-status-warning-bg: #FEF3C7;
+  --bc-status-error:      #B91C1C;
+  --bc-status-error-bg:   #FEE2E2;
+  --bc-status-info:       #1D4ED8;
+  --bc-status-info-bg:    #DBEAFE;
+  --bc-status-draft:      #6D28D9;
+  --bc-status-draft-bg:   #EDE9FE;
+}
