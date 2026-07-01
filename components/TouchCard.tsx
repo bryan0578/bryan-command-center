@@ -1,5 +1,6 @@
 import type { Touch, TouchCategory } from "@/lib/types";
 import { Checkbox } from "@/components/ui/Checkbox";
+import { InlineEdit } from "@/components/ui/InlineEdit";
 
 const categoryLabel: Record<TouchCategory, string> = {
   career: "Career",
@@ -16,9 +17,10 @@ const categoryColorClass: Record<TouchCategory, string> = {
 interface TouchCardProps {
   touch: Touch;
   onToggle: () => void;
+  onEditLabel: (label: string) => void;
 }
 
-export function TouchCard({ touch, onToggle }: TouchCardProps) {
+export function TouchCard({ touch, onToggle, onEditLabel }: TouchCardProps) {
   return (
     <div
       role="checkbox"
@@ -41,7 +43,16 @@ export function TouchCard({ touch, onToggle }: TouchCardProps) {
         </span>
         <Checkbox checked={touch.done} size={22} />
       </div>
-      <div className="text-[14.5px] leading-[1.45] text-ink-secondary">{touch.label}</div>
+      <div onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
+        <InlineEdit
+          value={touch.label}
+          onCommit={onEditLabel}
+          multiline
+          ariaLabel={`Edit ${categoryLabel[touch.category]} touch`}
+          displayClassName="text-[14.5px] leading-[1.45] text-ink-secondary"
+          inputClassName="text-[14.5px] leading-[1.45] text-ink-secondary"
+        />
+      </div>
     </div>
   );
 }

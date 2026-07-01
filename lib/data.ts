@@ -3,6 +3,7 @@ import type {
   FocusBlock,
   Mission,
   MovementEvent,
+  NotTodayItem,
   Project,
   Proof,
   Role,
@@ -80,12 +81,12 @@ export const projects: Project[] = [
   { id: "p4", name: "Freelance / client", status: "waiting" },
 ];
 
-export const notToday: string[] = [
-  "Refactor the portfolio site",
-  "Research a new CRM",
-  "Reorganize the whole Notion",
-  "Reply to the non-urgent email backlog",
-  "Plan the Q3 content calendar",
+export const notToday: NotTodayItem[] = [
+  { id: "nt1", text: "Refactor the portfolio site" },
+  { id: "nt2", text: "Research a new CRM" },
+  { id: "nt3", text: "Reorganize the whole Notion" },
+  { id: "nt4", text: "Reply to the non-urgent email backlog" },
+  { id: "nt5", text: "Plan the Q3 content calendar" },
 ];
 
 // Static display total — used only before the live counters (lib/week.ts) take
