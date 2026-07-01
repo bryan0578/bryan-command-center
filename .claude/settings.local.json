@@ -4,7 +4,13 @@
       "Bash(npx --yes playwright screenshot --full-page --viewport-size=1440,1000 --wait-for-timeout=1500 http://localhost:3000/ \"/private/tmp/claude-503/-Users-Work-Documents-Projects-bryan-command-center/f96fb9dd-214e-417c-9de6-f2f7f459adf3/scratchpad/dashboard.png\")",
       "Bash(curl *)",
       "Bash(npx tsc *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npx eslint *)",
+      "Bash(git stash *)",
+      "mcp__claude-in-chrome__navigate",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
