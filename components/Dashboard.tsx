@@ -65,12 +65,14 @@ export function Dashboard() {
     "cc:chores",
     seedChores.filter((c) => c.done).map((c) => c.id),
   );
+  const rewardChecklist = useChecklist("cc:reward", []);
   const [tasksOverride, setTasksOverride] = useTasksOverride();
 
   const touches = seedTouches.map((t) => ({ ...t, done: touchChecklist.completed.has(t.id) }));
   const chores = seedChores.map((c) => ({ ...c, done: choreChecklist.completed.has(c.id) }));
 
   const rewardUnlocked = timer.elapsedSeconds >= focusBlock.durationMinutes * 60;
+  const rewardDone = rewardUnlocked && rewardChecklist.completed.has("reward");
 
   const proof = computeProof({
     touches,
@@ -96,7 +98,12 @@ export function Dashboard() {
             onReset={timer.reset}
           />
           <Connector />
-          <RewardCard rewardText={focusBlock.rewardText} unlocked={rewardUnlocked} />
+          <RewardCard
+            rewardText={focusBlock.rewardText}
+            unlocked={rewardUnlocked}
+            done={rewardDone}
+            onToggle={() => rewardUnlocked && rewardChecklist.toggle("reward")}
+          />
         </div>
         <JobSearchTracker roles={roles} jobCounts={jobCounts} nextAction={nextAction} />
       </div>
