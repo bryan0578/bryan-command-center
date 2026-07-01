@@ -12,9 +12,10 @@ const CATEGORIES: { category: TouchCategory; label: string }[] = [
 interface ThreeTouchesProps {
   touches: Touch[];
   onToggle: (id: string) => void;
+  onEditLabel: (id: string, label: string) => void;
 }
 
-export function ThreeTouches({ touches, onToggle }: ThreeTouchesProps) {
+export function ThreeTouches({ touches, onToggle, onEditLabel }: ThreeTouchesProps) {
   return (
     <Card variant="elevated" radius="section" className="p-[22px]">
       <div className="mb-4 flex items-center justify-between gap-2.5">
@@ -32,7 +33,12 @@ export function ThreeTouches({ touches, onToggle }: ThreeTouchesProps) {
         {CATEGORIES.map(({ category, label }) => {
           const touch = touches.find((t) => t.category === category);
           return touch ? (
-            <TouchCard key={touch.id} touch={touch} onToggle={() => onToggle(touch.id)} />
+            <TouchCard
+              key={touch.id}
+              touch={touch}
+              onToggle={() => onToggle(touch.id)}
+              onEditLabel={(label) => onEditLabel(touch.id, label)}
+            />
           ) : (
             <div
               key={category}

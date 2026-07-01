@@ -64,3 +64,20 @@ export interface MovementEvent {
   sourceId: string;
   createdAt: string;
 }
+
+export interface NotTodayItem {
+  id: string;
+  text: string;
+}
+
+/** Editable Mission fields — excludes the system-derived day/dateLabel. */
+export type MissionContent = Pick<Mission, "primaryFocus" | "energy" | "stress">;
+
+/** Editable FocusBlock fields — excludes elapsedSeconds/status, which the timer hook owns. */
+export type FocusBlockContent = Omit<FocusBlock, "elapsedSeconds" | "status">;
+
+/** Touch content without `done`, which lives in the touches checklist. */
+export type TouchContent = Omit<Touch, "done">;
+
+/** Chore content without `done`, which lives in the chores checklist. */
+export type ChoreContent = Omit<Chore, "done">;

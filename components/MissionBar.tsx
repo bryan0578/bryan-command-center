@@ -2,6 +2,7 @@ import type { Mission } from "@/lib/types";
 import { Card } from "@/components/ui/Card";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SegmentMeter } from "@/components/ui/SegmentMeter";
+import { InlineEdit } from "@/components/ui/InlineEdit";
 
 function levelLabel(value: number): string {
   if (value <= 0) return "—";
@@ -12,11 +13,12 @@ function levelLabel(value: number): string {
 
 interface MissionBarProps {
   mission: Mission;
+  onSetPrimaryFocus: (text: string) => void;
+  onSetEnergy: (value: number) => void;
+  onSetStress: (value: number) => void;
 }
 
-export function MissionBar({ mission }: MissionBarProps) {
-  const hasFocus = mission.primaryFocus.trim().length > 0;
-
+export function MissionBar({ mission, onSetPrimaryFocus, onSetEnergy, onSetStress }: MissionBarProps) {
   return (
     <Card
       variant="elevated"
@@ -29,28 +31,30 @@ export function MissionBar({ mission }: MissionBarProps) {
           <span className="h-1 w-1 rounded-full bg-ink-disabled" />
           <span className="font-sans text-xs tracking-[0.04em] text-ink-muted">{mission.dateLabel}</span>
         </div>
-        {hasFocus ? (
-          <div className="mt-3 max-w-[600px] border-l-[3px] border-mint pl-[15px] font-sans text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-primary">
-            {mission.primaryFocus}
-          </div>
-        ) : (
-          <div className="mt-3 max-w-[600px] border-l-[3px] border-border pl-[15px] font-sans text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-muted italic">
-            Set today&apos;s primary focus
-          </div>
-        )}
+        <InlineEdit
+          value={mission.primaryFocus}
+          onCommit={onSetPrimaryFocus}
+          multiline
+          placeholder="Set today's primary focus"
+          ariaLabel="Edit today's primary focus"
+          displayClassName="mt-3 max-w-[600px] border-l-[3px] border-mint pl-[15px] font-sans text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-primary"
+          inputClassName="mt-3 max-w-[600px] border-l-[3px] border-mint pl-[15px] font-sans text-[21px] leading-[1.35] font-[650] tracking-[-0.02em] text-ink-primary"
+        />
       </div>
       <div className="flex min-w-[268px] flex-col gap-3 rounded-card border border-border bg-base px-4 py-[15px]">
         <SegmentMeter
           label="Energy"
           accent="mint"
-          value={hasFocus ? mission.energy : 0}
-          valueLabel={hasFocus ? levelLabel(mission.energy) : "—"}
+          value={mission.energy}
+          valueLabel={levelLabel(mission.energy)}
+          onSelect={onSetEnergy}
         />
         <SegmentMeter
           label="Stress"
           accent="aqua"
-          value={hasFocus ? mission.stress : 0}
-          valueLabel={hasFocus ? levelLabel(mission.stress) : "—"}
+          value={mission.stress}
+          valueLabel={levelLabel(mission.stress)}
+          onSelect={onSetStress}
         />
       </div>
     </Card>
