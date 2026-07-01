@@ -10,7 +10,17 @@
       "mcp__claude-in-chrome__navigate",
       "mcp__claude-in-chrome__tabs_context_mcp",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh pr *)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(brew list *)",
+      "Bash(env)",
+      "Bash(brew --version)",
+      "Read(//Users/Work/.config/**)",
+      "Read(//Users/Work/**)",
+      "Bash(brew install *)",
+      "Bash(gh auth *)"
     ]
   }
 }
