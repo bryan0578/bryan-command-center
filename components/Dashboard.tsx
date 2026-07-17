@@ -7,6 +7,7 @@ import {
   focusBlock,
   mission as seedMission,
   movementLog,
+  mergePortfolioProjects,
   nextAction as seedNextAction,
   notToday as seedNotToday,
   projects as seedProjects,
@@ -80,7 +81,10 @@ export function Dashboard() {
   const [focusContent, setFocusContent] = usePersistedState("cc:focus-content", focusContentSeed);
   const [touchesContent, setTouchesContent] = usePersistedState("cc:touches-content", touchesContentSeed);
   const [choresContent, setChoresContent] = usePersistedState("cc:chores-content", choresContentSeed);
-  const [projectsContent, setProjectsContent] = usePersistedState("cc:projects-content", seedProjects);
+  const [projectsContent, setProjectsContent] = usePersistedState("cc:projects-content", seedProjects, {
+    migrationKey: "cc:migration:portfolio-v1",
+    migrate: mergePortfolioProjects,
+  });
   const [notTodayItems, setNotTodayItems] = usePersistedState("cc:not-today", seedNotToday);
   const [rolesContent, setRolesContent] = usePersistedState("cc:job-roles", roles);
   const [jobNextAction, setJobNextAction] = usePersistedState("cc:job-next-action", seedNextAction);

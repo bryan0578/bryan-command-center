@@ -1,6 +1,6 @@
 export type TouchCategory = "career" | "home" | "creative";
 export type RoleStatus = "saved" | "applied" | "follow_up";
-export type ProjectStatus = "draft" | "active" | "idle" | "waiting";
+export type ProjectStatus = "draft" | "active" | "idle" | "waiting" | "complete";
 export type BlockStatus = "idle" | "running" | "paused" | "done";
 export type MovementType = "career" | "chore" | "creative" | "task";
 

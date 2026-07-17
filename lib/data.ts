@@ -75,11 +75,36 @@ export const chores: Chore[] = [
 ];
 
 export const projects: Project[] = [
-  { id: "p1", name: "Caleb Ash", status: "draft" },
-  { id: "p2", name: "PrettyWise", status: "active" },
-  { id: "p3", name: "Blog / content", status: "idle" },
-  { id: "p4", name: "Freelance / client", status: "waiting" },
+  { id: "portfolio-c-finance", name: "C-Finance", status: "active" },
+  { id: "portfolio-shape-of-home", name: "The Shape of Home Release Campaign", status: "active" },
+  { id: "portfolio-job-search", name: "Job Search", status: "active" },
+  { id: "portfolio-sap-migration", name: "SAP PI/PO → CPI Migration", status: "active" },
+  { id: "portfolio-sap-joule", name: "SAP Joule Work", status: "active" },
+  { id: "portfolio-dylan", name: "Dylan’s Landscaping Website", status: "waiting" },
+  { id: "portfolio-remotion", name: "Remotion AI Video Editor", status: "draft" },
+  { id: "portfolio-dorsyth", name: "Dorsyth Records Website V1", status: "complete" },
+  { id: "portfolio-bcc", name: "Bryan Command Center V1", status: "complete" },
+  { id: "portfolio-lcc", name: "Life Command Center V1", status: "complete" },
+  { id: "portfolio-nexus", name: "Nexus Platform Foundation", status: "complete" },
 ];
+
+const legacyDefaultProjects = new Map([
+  ["p1", "Caleb Ash"],
+  ["p2", "PrettyWise"],
+  ["p3", "Blog / content"],
+  ["p4", "Freelance / client"],
+]);
+
+export function mergePortfolioProjects(existing: Project[]): Project[] {
+  const preserved = existing.filter(
+    (project) => legacyDefaultProjects.get(project.id) !== project.name,
+  );
+  const names = new Set(preserved.map((project) => project.name.trim().toLocaleLowerCase()));
+  return [
+    ...preserved,
+    ...projects.filter((project) => !names.has(project.name.toLocaleLowerCase())),
+  ];
+}
 
 export const notToday: NotTodayItem[] = [
   { id: "nt1", text: "Refactor the portfolio site" },

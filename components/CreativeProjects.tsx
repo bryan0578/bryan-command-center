@@ -29,7 +29,7 @@ export function CreativeProjects({ projects, onEditName, onSetStatus, onRemove, 
   return (
     <Card radius="section" className="p-[22px]">
       <div className="mb-[15px]">
-        <Eyebrow color="violet">Creative Projects</Eyebrow>
+        <Eyebrow color="violet">Project Portfolio</Eyebrow>
       </div>
       {projects.length > 0 ? (
         <div className="flex flex-col gap-2">
