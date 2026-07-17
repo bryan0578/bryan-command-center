@@ -83,6 +83,22 @@
 body {
   background: var(--color-canvas);
   color: var(--color-ink-primary);
+  overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
 }
 
 /* Shared aqua focus ring for keyboard nav on interactive rows/buttons */
