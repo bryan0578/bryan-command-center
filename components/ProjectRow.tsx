@@ -7,6 +7,7 @@ const statusTone: Record<Project["status"], StatusChipTone> = {
   active: "mint",
   idle: "muted",
   waiting: "info",
+  complete: "mint",
 };
 
 const statusLabel: Record<Project["status"], string> = {
@@ -14,9 +15,10 @@ const statusLabel: Record<Project["status"], string> = {
   active: "Active",
   idle: "Idle",
   waiting: "Waiting",
+  complete: "Complete",
 };
 
-const STATUS_CYCLE: Project["status"][] = ["draft", "active", "idle", "waiting"];
+const STATUS_CYCLE: Project["status"][] = ["draft", "active", "idle", "waiting", "complete"];
 
 function nextStatus(current: Project["status"]): Project["status"] {
   const index = STATUS_CYCLE.indexOf(current);
