@@ -42,8 +42,8 @@ export function RewardCard({ rewardText, unlocked, done, onToggle, onSetRewardTe
               inputClassName="text-[15px] font-semibold text-ink-primary"
             />
           </div>
-          <Button variant="primary" size="sm" className="mt-[13px]">
-            Start reward →
+          <Button variant="primary" size="sm" className="mt-[13px]" onClick={onToggle}>
+            {done ? "Reward complete ✓" : "Mark reward complete →"}
           </Button>
         </div>
       ) : (

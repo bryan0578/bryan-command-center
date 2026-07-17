@@ -7,9 +7,10 @@ A private, ADHD-friendly daily operating system for choosing one mission, comple
 - Editable mission, energy, stress, focus block, reward, daily touches, chores, projects, and Not Today list
 - Persistent timestamp-based focus timer
 - Editable job-search pipeline with live counts, status changes, additions, removals, and a single next action
-- Weekly proof-of-movement summary
+- Daily checklist and focus-timer rollover using the user's local calendar day
+- Weekly proof-of-movement history that records new completions without double-counting today
 - Browser-local persistence across refreshes
-- Private JSON backup download and guarded reset
+- Private JSON backup download, validated restore, and guarded reset
 - Responsive dark interface based on the approved Claude Design handoff
 
 The application intentionally uses browser-local storage. No account, server database, or external service is required. Data does not automatically follow the user to another device; use **Download backup** before switching browsers or devices.
