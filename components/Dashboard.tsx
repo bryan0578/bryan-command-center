@@ -1,13 +1,13 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import {
   chores as seedChores,
   focusBlock,
-  jobCounts,
   mission as seedMission,
   movementLog,
-  nextAction,
+  nextAction as seedNextAction,
   notToday as seedNotToday,
   projects as seedProjects,
   roles,
@@ -28,6 +28,7 @@ import { ThreeTouches } from "@/components/ThreeTouches";
 import { HomeReset } from "@/components/HomeReset";
 import { CreativeProjects } from "@/components/CreativeProjects";
 import { NotToday } from "@/components/NotToday";
+import { CommandCenterControls } from "@/components/CommandCenterControls";
 
 const TASKS_OVERRIDE_KEY = "cc:tasks-override";
 
@@ -79,6 +80,8 @@ export function Dashboard() {
   const [choresContent, setChoresContent] = usePersistedState("cc:chores-content", choresContentSeed);
   const [projectsContent, setProjectsContent] = usePersistedState("cc:projects-content", seedProjects);
   const [notTodayItems, setNotTodayItems] = usePersistedState("cc:not-today", seedNotToday);
+  const [rolesContent, setRolesContent] = usePersistedState("cc:job-roles", roles);
+  const [jobNextAction, setJobNextAction] = usePersistedState("cc:job-next-action", seedNextAction);
 
   const timer = useTimer("cc:focus-timer", focusContent.durationMinutes);
 
@@ -93,18 +96,34 @@ export function Dashboard() {
   const rewardChecklist = useChecklist("cc:reward", []);
   const [tasksOverride, setTasksOverride] = useTasksOverride();
 
-  const mission = { ...seedMission, ...missionContent };
+  const now = new Date();
+  const mission = {
+    ...seedMission,
+    ...missionContent,
+    day: now.toISOString().slice(0, 10),
+    dateLabel: new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }).format(now),
+  };
   const touches = touchesContent.map((t) => ({ ...t, done: touchChecklist.completed.has(t.id) }));
   const chores = choresContent.map((c) => ({ ...c, done: choreChecklist.completed.has(c.id) }));
 
   const rewardUnlocked = timer.elapsedSeconds >= focusContent.durationMinutes * 60;
   const rewardDone = rewardUnlocked && rewardChecklist.completed.has("reward");
+  const jobCounts = {
+    saved: rolesContent.filter((role) => role.status === "saved").length,
+    applied: rolesContent.filter((role) => role.status === "applied").length,
+    followUps: rolesContent.filter((role) => role.status === "follow_up").length,
+  };
 
   const proof = computeProof({
     touches,
     chores,
     movementLog,
-    now: new Date(),
+    now,
     tasksOverride,
   });
 
@@ -140,7 +159,22 @@ export function Dashboard() {
             onSetRewardText={(text) => setFocusContent((prev) => ({ ...prev, rewardText: text }))}
           />
         </div>
-        <JobSearchTracker roles={roles} jobCounts={jobCounts} nextAction={nextAction} />
+        <JobSearchTracker
+          roles={rolesContent}
+          jobCounts={jobCounts}
+          nextAction={jobNextAction}
+          onAddRole={(company, title) =>
+            setRolesContent((prev) => [
+              ...prev,
+              { id: crypto.randomUUID(), company, title, status: "saved" },
+            ])
+          }
+          onSetStatus={(id, status) =>
+            setRolesContent((prev) => prev.map((role) => (role.id === id ? { ...role, status } : role)))
+          }
+          onRemoveRole={(id) => setRolesContent((prev) => prev.filter((role) => role.id !== id))}
+          onSetNextAction={setJobNextAction}
+        />
       </div>
 
       <ThreeTouches
@@ -181,6 +215,8 @@ export function Dashboard() {
         onAdd={(text) => setNotTodayItems((prev) => [...prev, { id: crypto.randomUUID(), text }])}
         onRemove={(id) => setNotTodayItems((prev) => prev.filter((item) => item.id !== id))}
       />
+
+      <CommandCenterControls />
     </div>
   );
 }

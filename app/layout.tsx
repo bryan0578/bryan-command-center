@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Command Center",
+  title: "Bryan Command Center",
   description: "A private, ADHD-friendly daily operating system.",
 };
 
