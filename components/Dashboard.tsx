@@ -13,8 +13,8 @@ import {
   roles,
   touches as seedTouches,
 } from "@/lib/data";
-import type { ChoreContent, FocusBlockContent, MissionContent, TouchContent } from "@/lib/types";
-import { computeProof } from "@/lib/week";
+import type { ChoreContent, FocusBlockContent, MissionContent, MovementType, TouchContent } from "@/lib/types";
+import { computeProof, localDateKey } from "@/lib/week";
 import { useTimer } from "@/hooks/useTimer";
 import { useChecklist } from "@/hooks/useChecklist";
 import { usePersistedState } from "@/hooks/usePersistedState";
@@ -74,6 +74,8 @@ const touchesContentSeed: TouchContent[] = seedTouches.map(({ id, category, labe
 const choresContentSeed: ChoreContent[] = seedChores.map(({ id, label }) => ({ id, label }));
 
 export function Dashboard() {
+  const now = new Date();
+  const currentDay = localDateKey(now);
   const [missionContent, setMissionContent] = usePersistedState("cc:mission", missionContentSeed);
   const [focusContent, setFocusContent] = usePersistedState("cc:focus-content", focusContentSeed);
   const [touchesContent, setTouchesContent] = usePersistedState("cc:touches-content", touchesContentSeed);
@@ -82,25 +84,27 @@ export function Dashboard() {
   const [notTodayItems, setNotTodayItems] = usePersistedState("cc:not-today", seedNotToday);
   const [rolesContent, setRolesContent] = usePersistedState("cc:job-roles", roles);
   const [jobNextAction, setJobNextAction] = usePersistedState("cc:job-next-action", seedNextAction);
+  const [movementHistory, setMovementHistory] = usePersistedState("cc:movement-log", movementLog);
 
-  const timer = useTimer("cc:focus-timer", focusContent.durationMinutes);
+  const timer = useTimer("cc:focus-timer", focusContent.durationMinutes, currentDay);
 
   const touchChecklist = useChecklist(
     "cc:touches",
-    seedTouches.filter((t) => t.done).map((t) => t.id),
+    [],
+    currentDay,
   );
   const choreChecklist = useChecklist(
     "cc:chores",
-    seedChores.filter((c) => c.done).map((c) => c.id),
+    [],
+    currentDay,
   );
-  const rewardChecklist = useChecklist("cc:reward", []);
+  const rewardChecklist = useChecklist("cc:reward", [], currentDay);
   const [tasksOverride, setTasksOverride] = useTasksOverride();
 
-  const now = new Date();
   const mission = {
     ...seedMission,
     ...missionContent,
-    day: now.toISOString().slice(0, 10),
+    day: currentDay,
     dateLabel: new Intl.DateTimeFormat("en-US", {
       weekday: "long",
       month: "long",
@@ -110,6 +114,30 @@ export function Dashboard() {
   };
   const touches = touchesContent.map((t) => ({ ...t, done: touchChecklist.completed.has(t.id) }));
   const chores = choresContent.map((c) => ({ ...c, done: choreChecklist.completed.has(c.id) }));
+
+  const recordMovement = (type: MovementType, sourceId: string, completed: boolean) => {
+    const id = `${currentDay}:${type}:${sourceId}`;
+    setMovementHistory((previous) => {
+      if (!completed) return previous.filter((event) => event.id !== id);
+      if (previous.some((event) => event.id === id)) return previous;
+      return [...previous, { id, type, sourceId, createdAt: new Date().toISOString() }];
+    });
+  };
+
+  const toggleTouch = (id: string) => {
+    const touch = touchesContent.find((item) => item.id === id);
+    if (!touch) return;
+    const completing = !touchChecklist.completed.has(id);
+    touchChecklist.toggle(id);
+    const type: MovementType = touch.category === "home" ? "chore" : touch.category;
+    recordMovement(type, id, completing);
+  };
+
+  const toggleChore = (id: string) => {
+    const completing = !choreChecklist.completed.has(id);
+    choreChecklist.toggle(id);
+    recordMovement("chore", id, completing);
+  };
 
   const rewardUnlocked = timer.elapsedSeconds >= focusContent.durationMinutes * 60;
   const rewardDone = rewardUnlocked && rewardChecklist.completed.has("reward");
@@ -122,7 +150,7 @@ export function Dashboard() {
   const proof = computeProof({
     touches,
     chores,
-    movementLog,
+    movementLog: movementHistory,
     now,
     tasksOverride,
   });
@@ -179,7 +207,7 @@ export function Dashboard() {
 
       <ThreeTouches
         touches={touches}
-        onToggle={touchChecklist.toggle}
+        onToggle={toggleTouch}
         onEditLabel={(id, label) =>
           setTouchesContent((prev) => prev.map((t) => (t.id === id ? { ...t, label } : t)))
         }
@@ -188,7 +216,7 @@ export function Dashboard() {
       <div className="grid grid-cols-1 items-start gap-[18px] md:grid-cols-2">
         <HomeReset
           chores={chores}
-          onToggle={choreChecklist.toggle}
+          onToggle={toggleChore}
           onEditLabel={(id, label) =>
             setChoresContent((prev) => prev.map((c) => (c.id === id ? { ...c, label } : c)))
           }

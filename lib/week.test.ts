@@ -1,11 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { computeProof, startOfISOWeek } from "./week";
+import { computeProof, localDateKey, startOfISOWeek } from "./week";
 
 describe("weekly proof", () => {
   it("starts ISO weeks on Monday", () => {
     const monday = startOfISOWeek(new Date("2026-07-19T12:00:00"));
     expect(monday.getDay()).toBe(1);
     expect(monday.getHours()).toBe(0);
+  });
+
+  it("uses the user's local calendar day", () => {
+    expect(localDateKey(new Date(2026, 6, 17, 23, 30))).toBe("2026-07-17");
   });
 
   it("combines this week's history with today's completed work", () => {

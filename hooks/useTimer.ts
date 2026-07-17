@@ -8,6 +8,7 @@ interface PersistedTimer {
   baseElapsed: number;
   running: boolean;
   startedAt: number | null;
+  day?: string;
 }
 
 const IDLE: PersistedTimer = { baseElapsed: 0, running: false, startedAt: null };
@@ -43,7 +44,7 @@ function liveElapsed(state: PersistedTimer, total: number, now: number): number 
  * instead of ticking a countdown directly, so a refresh mid-block can
  * reconcile elapsed time from wall-clock time rather than drifting.
  */
-export function useTimer(storageKey: string, durationMinutes: number) {
+export function useTimer(storageKey: string, durationMinutes: number, day?: string) {
   const total = totalSeconds(durationMinutes);
   const [state, setState] = useState<PersistedTimer>(IDLE);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -51,20 +52,21 @@ export function useTimer(storageKey: string, durationMinutes: number) {
 
   useEffect(() => {
     const stored = readStorage(storageKey);
-    if (stored) {
+    if (stored && (!day || !stored.day || stored.day === day)) {
       const now = Date.now();
       const elapsed = liveElapsed(stored, total, now);
       const done = elapsed >= total;
       const reconciled: PersistedTimer = done
-        ? { baseElapsed: total, running: false, startedAt: null }
-        : { baseElapsed: elapsed, running: stored.running, startedAt: stored.running ? now : null };
+        ? { baseElapsed: total, running: false, startedAt: null, day }
+        : { baseElapsed: elapsed, running: stored.running, startedAt: stored.running ? now : null, day };
       setState(reconciled);
       setElapsedSeconds(elapsed);
+    } else if (stored) {
+      setState({ ...IDLE, day });
+      setElapsedSeconds(0);
     }
     hydrated.current = true;
-    // Only ever reconcile against storage once, on mount.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [day, storageKey, total]);
 
   useEffect(() => {
     if (!hydrated.current) return;
@@ -81,24 +83,24 @@ export function useTimer(storageKey: string, durationMinutes: number) {
       const elapsed = liveElapsed(state, total, now);
       setElapsedSeconds(elapsed);
       if (elapsed >= total) {
-        setState({ baseElapsed: total, running: false, startedAt: null });
+        setState({ baseElapsed: total, running: false, startedAt: null, day });
       }
     }, 1000);
     return () => clearInterval(id);
-  }, [state, total]);
+  }, [day, state, total]);
 
   const toggle = () => {
     setState((prev) => {
       if (prev.baseElapsed >= total) return prev;
       const now = Date.now();
       if (prev.running) {
-        return { baseElapsed: liveElapsed(prev, total, now), running: false, startedAt: null };
+        return { baseElapsed: liveElapsed(prev, total, now), running: false, startedAt: null, day };
       }
-      return { baseElapsed: prev.baseElapsed, running: true, startedAt: now };
+      return { baseElapsed: prev.baseElapsed, running: true, startedAt: now, day };
     });
   };
 
-  const reset = () => setState(IDLE);
+  const reset = () => setState({ ...IDLE, day });
 
   return { elapsedSeconds: Math.floor(elapsedSeconds), running: state.running, toggle, reset };
 }
