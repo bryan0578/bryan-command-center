@@ -1,0 +1,29 @@
+import type { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    id: "/",
+    name: "Bryan Command Center",
+    short_name: "Command Center",
+    description: "A private, ADHD-friendly daily operating system.",
+    start_url: "/",
+    scope: "/",
+    display: "standalone",
+    background_color: "#050817",
+    theme_color: "#050817",
+    icons: [
+      {
+        src: "/icons/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icons/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any maskable",
+      },
+    ],
+  };
+}
