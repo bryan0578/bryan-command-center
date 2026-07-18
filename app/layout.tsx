@@ -11,6 +11,29 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Bryan Command Center",
   description: "A private, ADHD-friendly daily operating system.",
+  applicationName: "Bryan Command Center",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Bryan Command Center",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: [
+      {
+        url: "/icons/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/icons/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
