@@ -1,6 +1,16 @@
 export type TouchCategory = "career" | "home" | "creative";
 export type RoleStatus = "saved" | "applied" | "follow_up";
-export type ProjectStatus = "draft" | "active" | "idle" | "waiting" | "complete";
+export const PROJECT_LIFECYCLE_STATES = [
+  "active",
+  "functionally-complete",
+  "production-ready",
+  "closed",
+  "maintenance",
+  "paused",
+  "archived",
+  "reopened",
+] as const;
+export type ProjectLifecycleState = (typeof PROJECT_LIFECYCLE_STATES)[number];
 export type BlockStatus = "idle" | "running" | "paused" | "done";
 export type MovementType = "career" | "chore" | "creative" | "task";
 
@@ -45,7 +55,14 @@ export interface Chore {
 export interface Project {
   id: string;
   name: string;
-  status: ProjectStatus;
+  lifecycleState: ProjectLifecycleState;
+  maintenanceTier?: string;
+  lastReviewDate?: string;
+  nextReviewDate?: string;
+  reopeningTrigger?: string;
+  repositoryUrl?: string;
+  deploymentUrl?: string;
+  closureRecordUrl?: string;
 }
 
 export interface Proof {

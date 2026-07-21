@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { COMMAND_CENTER_PREFIX, parseBackup } from "@/lib/backup";
+import { COMMAND_CENTER_PREFIX, createBackup, parseBackup } from "@/lib/backup";
 
 export function CommandCenterControls() {
   const restoreInput = useRef<HTMLInputElement>(null);
@@ -22,7 +22,7 @@ export function CommandCenterControls() {
     }
 
     const blob = new Blob(
-      [JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), data }, null, 2)],
+      [JSON.stringify(createBackup(data), null, 2)],
       { type: "application/json" },
     );
     const link = document.createElement("a");

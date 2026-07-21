@@ -7,14 +7,14 @@ import {
   focusBlock,
   mission as seedMission,
   movementLog,
-  mergePortfolioProjects,
   nextAction as seedNextAction,
   notToday as seedNotToday,
   projects as seedProjects,
   roles,
   touches as seedTouches,
 } from "@/lib/data";
-import type { ChoreContent, FocusBlockContent, MissionContent, MovementType, TouchContent } from "@/lib/types";
+import type { ChoreContent, FocusBlockContent, MissionContent, MovementType, Project, TouchContent } from "@/lib/types";
+import { getProjectValidationError, migrateProjectPortfolio } from "@/lib/projects";
 import { computeProof, localDateKey } from "@/lib/week";
 import { useTimer } from "@/hooks/useTimer";
 import { useChecklist } from "@/hooks/useChecklist";
@@ -82,8 +82,8 @@ export function Dashboard() {
   const [touchesContent, setTouchesContent] = usePersistedState("cc:touches-content", touchesContentSeed);
   const [choresContent, setChoresContent] = usePersistedState("cc:chores-content", choresContentSeed);
   const [projectsContent, setProjectsContent] = usePersistedState("cc:projects-content", seedProjects, {
-    migrationKey: "cc:migration:portfolio-v1",
-    migrate: mergePortfolioProjects,
+    migrationKey: "cc:migration:project-lifecycle-v2",
+    migrate: migrateProjectPortfolio,
   });
   const [notTodayItems, setNotTodayItems] = usePersistedState("cc:not-today", seedNotToday);
   const [rolesContent, setRolesContent] = usePersistedState("cc:job-roles", roles);
@@ -159,6 +159,18 @@ export function Dashboard() {
     tasksOverride,
   });
 
+  const updateProject = (id: string, changes: Partial<Project>): string | null => {
+    const current = projectsContent.find((project) => project.id === id);
+    if (!current) return "Project could not be found.";
+    const candidate = { ...current, ...changes };
+    const validationError = getProjectValidationError(candidate);
+    if (validationError) return validationError;
+    setProjectsContent((previous) =>
+      previous.map((project) => (project.id === id ? candidate : project)),
+    );
+    return null;
+  };
+
   return (
     <div className="mx-auto flex max-w-[1280px] flex-col gap-[18px] px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:pt-9 lg:pb-12">
       <MissionBar
@@ -229,15 +241,13 @@ export function Dashboard() {
         />
         <CreativeProjects
           projects={projectsContent}
-          onEditName={(id, name) =>
-            setProjectsContent((prev) => prev.map((p) => (p.id === id ? { ...p, name } : p)))
-          }
-          onSetStatus={(id, status) =>
-            setProjectsContent((prev) => prev.map((p) => (p.id === id ? { ...p, status } : p)))
-          }
+          onUpdate={updateProject}
           onRemove={(id) => setProjectsContent((prev) => prev.filter((p) => p.id !== id))}
           onAdd={(name) =>
-            setProjectsContent((prev) => [...prev, { id: crypto.randomUUID(), name, status: "draft" }])
+            setProjectsContent((prev) => [
+              ...prev,
+              { id: crypto.randomUUID(), name, lifecycleState: "active" },
+            ])
           }
         />
       </div>
