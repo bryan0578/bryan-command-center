@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { mergePortfolioProjects, projects } from "./data";
+import { projects } from "./data";
+import { migrateProjectPortfolio } from "./projects";
 
 describe("project portfolio migration", () => {
   it("replaces untouched prototype projects and preserves personal additions", () => {
-    const migrated = mergePortfolioProjects([
+    const migrated = migrateProjectPortfolio([
       { id: "p1", name: "Caleb Ash", status: "draft" },
       { id: "custom", name: "My private project", status: "waiting" },
     ]);
@@ -12,7 +13,7 @@ describe("project portfolio migration", () => {
     expect(migrated).toContainEqual({
       id: "custom",
       name: "My private project",
-      status: "waiting",
+      lifecycleState: "paused",
     });
     expect(migrated).toEqual(
       expect.arrayContaining(projects.map((project) => expect.objectContaining({ id: project.id }))),
@@ -20,7 +21,7 @@ describe("project portfolio migration", () => {
   });
 
   it("does not duplicate portfolio projects already in storage", () => {
-    const migrated = mergePortfolioProjects([projects[0]]);
+    const migrated = migrateProjectPortfolio([projects[0]]);
     expect(migrated.filter((project) => project.name === projects[0].name)).toHaveLength(1);
   });
 });

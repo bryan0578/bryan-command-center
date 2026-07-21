@@ -1,9 +1,23 @@
+import { normalizeProjectBackup } from "./projects";
+
 export const COMMAND_CENTER_PREFIX = "cc:";
+export const PROJECTS_STORAGE_KEY = "cc:projects-content";
 
 export interface CommandCenterBackup {
   version: 1;
   exportedAt: string;
   data: Record<string, unknown>;
+}
+
+export function createBackup(
+  data: Record<string, unknown>,
+  exportedAt = new Date(),
+): CommandCenterBackup {
+  return {
+    version: 1,
+    exportedAt: exportedAt.toISOString(),
+    data,
+  };
 }
 
 export function parseBackup(raw: string): CommandCenterBackup {
@@ -13,7 +27,12 @@ export function parseBackup(raw: string): CommandCenterBackup {
   }
 
   const candidate = parsed as Partial<CommandCenterBackup>;
-  if (candidate.version !== 1 || typeof candidate.data !== "object" || candidate.data === null) {
+  if (
+    candidate.version !== 1 ||
+    typeof candidate.data !== "object" ||
+    candidate.data === null ||
+    Array.isArray(candidate.data)
+  ) {
     throw new Error("This is not a supported Bryan Command Center backup.");
   }
 
@@ -22,9 +41,14 @@ export function parseBackup(raw: string): CommandCenterBackup {
     throw new Error("Backup contains data outside Bryan Command Center.");
   }
 
+  const data = Object.fromEntries(entries);
+  if (PROJECTS_STORAGE_KEY in data) {
+    data[PROJECTS_STORAGE_KEY] = normalizeProjectBackup(data[PROJECTS_STORAGE_KEY]);
+  }
+
   return {
     version: 1,
     exportedAt: typeof candidate.exportedAt === "string" ? candidate.exportedAt : "",
-    data: Object.fromEntries(entries),
+    data,
   };
 }

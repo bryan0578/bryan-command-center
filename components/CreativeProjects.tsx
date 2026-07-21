@@ -9,13 +9,12 @@ import { ProjectRow } from "@/components/ProjectRow";
 
 interface CreativeProjectsProps {
   projects: Project[];
-  onEditName: (id: string, name: string) => void;
-  onSetStatus: (id: string, status: Project["status"]) => void;
+  onUpdate: (id: string, changes: Partial<Project>) => string | null;
   onRemove: (id: string) => void;
   onAdd: (name: string) => void;
 }
 
-export function CreativeProjects({ projects, onEditName, onSetStatus, onRemove, onAdd }: CreativeProjectsProps) {
+export function CreativeProjects({ projects, onUpdate, onRemove, onAdd }: CreativeProjectsProps) {
   const [draft, setDraft] = useState("");
 
   const submit = () => {
@@ -37,8 +36,7 @@ export function CreativeProjects({ projects, onEditName, onSetStatus, onRemove, 
             <ProjectRow
               key={project.id}
               project={project}
-              onEditName={(name) => onEditName(project.id, name)}
-              onSetStatus={(status) => onSetStatus(project.id, status)}
+              onUpdate={(changes) => onUpdate(project.id, changes)}
               onRemove={() => onRemove(project.id)}
             />
           ))}
