@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   getProjectValidationError,
   isProjectReviewDue,
+  migrateBccV1Closure,
   migrateProjectPortfolio,
   normalizeProject,
 } from "./projects";
@@ -27,6 +28,25 @@ describe("project lifecycle migration", () => {
       { id: "custom", name: "Custom", status: "waiting", maintenanceTier: "Light" },
     ]);
     expect(migrateProjectPortfolio(once)).toEqual(once);
+  });
+
+  it("closes BCC V1 with its real closure record and is idempotent", () => {
+    const existing = [{
+      id: "portfolio-bcc",
+      name: "Bryan Command Center V1",
+      lifecycleState: "functionally-complete",
+      maintenanceTier: "Operator reviewed",
+    }];
+    const once = migrateBccV1Closure(existing);
+    const bcc = once.find((project) => project.id === "portfolio-bcc");
+
+    expect(bcc).toMatchObject({
+      lifecycleState: "closed",
+      maintenanceTier: "Operator reviewed",
+      closureRecordUrl: "https://github.com/bryan0578/bryan-command-center/blob/main/docs/CLOSURE.md",
+    });
+    expect(getProjectValidationError(bcc!)).toBeNull();
+    expect(migrateBccV1Closure(once)).toEqual(once);
   });
 
   it("rejects closed without a closure-record URL", () => {

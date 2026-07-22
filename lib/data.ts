@@ -83,7 +83,12 @@ export const projects: Project[] = [
   { id: "portfolio-dylan", name: "Dylan’s Landscaping Website", lifecycleState: "paused" },
   { id: "portfolio-remotion", name: "Remotion AI Video Editor", lifecycleState: "paused" },
   { id: "portfolio-dorsyth", name: "Dorsyth Records Website V1", lifecycleState: "functionally-complete" },
-  { id: "portfolio-bcc", name: "Bryan Command Center V1", lifecycleState: "functionally-complete" },
+  {
+    id: "portfolio-bcc",
+    name: "Bryan Command Center V1",
+    lifecycleState: "closed",
+    closureRecordUrl: "https://github.com/bryan0578/bryan-command-center/blob/main/docs/CLOSURE.md",
+  },
   { id: "portfolio-lcc", name: "Life Command Center V1", lifecycleState: "functionally-complete" },
   { id: "portfolio-nexus", name: "Nexus Platform Foundation", lifecycleState: "functionally-complete" },
 ];

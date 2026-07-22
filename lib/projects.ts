@@ -107,6 +107,23 @@ export function migrateProjectPortfolio(value: unknown): Project[] {
   ];
 }
 
+const BCC_V1_ID = "portfolio-bcc";
+const BCC_V1_CLOSURE_RECORD_URL =
+  "https://github.com/bryan0578/bryan-command-center/blob/main/docs/CLOSURE.md";
+
+/** Applies Bryan's evidence-backed BCC V1 closure to existing browser-local portfolios. */
+export function migrateBccV1Closure(value: unknown): Project[] {
+  return migrateProjectPortfolio(value).map((project) =>
+    project.id === BCC_V1_ID
+      ? {
+          ...project,
+          lifecycleState: "closed",
+          closureRecordUrl: BCC_V1_CLOSURE_RECORD_URL,
+        }
+      : project,
+  );
+}
+
 export function getProjectValidationError(project: Project): string | null {
   if (project.lifecycleState === "closed" && !isValidProjectUrl(project.closureRecordUrl)) {
     return "Closed requires a valid closure-record URL.";

@@ -14,7 +14,7 @@ import {
   touches as seedTouches,
 } from "@/lib/data";
 import type { ChoreContent, FocusBlockContent, MissionContent, MovementType, Project, TouchContent } from "@/lib/types";
-import { getProjectValidationError, migrateProjectPortfolio } from "@/lib/projects";
+import { getProjectValidationError, migrateBccV1Closure } from "@/lib/projects";
 import { computeProof, localDateKey } from "@/lib/week";
 import { useTimer } from "@/hooks/useTimer";
 import { useChecklist } from "@/hooks/useChecklist";
@@ -82,8 +82,8 @@ export function Dashboard() {
   const [touchesContent, setTouchesContent] = usePersistedState("cc:touches-content", touchesContentSeed);
   const [choresContent, setChoresContent] = usePersistedState("cc:chores-content", choresContentSeed);
   const [projectsContent, setProjectsContent] = usePersistedState("cc:projects-content", seedProjects, {
-    migrationKey: "cc:migration:project-lifecycle-v2",
-    migrate: migrateProjectPortfolio,
+    migrationKey: "cc:migration:bcc-v1-closure-v3",
+    migrate: migrateBccV1Closure,
   });
   const [notTodayItems, setNotTodayItems] = usePersistedState("cc:not-today", seedNotToday);
   const [rolesContent, setRolesContent] = usePersistedState("cc:job-roles", roles);
