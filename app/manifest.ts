@@ -5,25 +5,17 @@ export default function manifest(): MetadataRoute.Manifest {
     id: "/",
     name: "Bryan Command Center",
     short_name: "Command Center",
-    description: "A private, ADHD-friendly daily operating system.",
+    description: "A private daily operating system for focus, execution, and review.",
     start_url: "/",
     scope: "/",
     display: "standalone",
-    background_color: "#050817",
-    theme_color: "#050817",
+    background_color: "#070a0d",
+    theme_color: "#070a0d",
+    categories: ["productivity"],
     icons: [
-      {
-        src: "/icons/icon-192.png",
-        sizes: "192x192",
-        type: "image/png",
-        purpose: "any",
-      },
-      {
-        src: "/icons/icon-512.png",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable",
-      },
+      { src: "/icons/icon-192.png?v=portfolio-1", sizes: "192x192", type: "image/png", purpose: "any" },
+      { src: "/icons/icon-512.png?v=portfolio-1", sizes: "512x512", type: "image/png", purpose: "any" },
+      { src: "/icons/icon-maskable-512.png?v=portfolio-1", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
   };
 }
