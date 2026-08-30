@@ -1,6 +1,7 @@
 /* Bryan Command Center — dense, focused mission control. */
 html, body { background: #070a0d; }
 body {
+  min-height: 100dvh;
   background-image:
     linear-gradient(rgba(94, 242, 194, .022) 1px, transparent 1px),
     linear-gradient(90deg, rgba(56, 217, 242, .018) 1px, transparent 1px),
@@ -14,6 +15,15 @@ button, a, input, select, textarea, [role="button"] { -webkit-tap-highlight-colo
 @media (max-width: 640px) {
   input, select, textarea { font-size: 16px !important; }
   button, [role="button"], nav a { min-height: 44px; }
+
+  /* The dashboard has intentionally minimal chrome, so the document itself
+     needs to own standalone iPhone safe-area spacing. */
+  body > div,
+  main,
+  [class*="max-w-[1280px]"] {
+    padding-top: max(1.5rem, env(safe-area-inset-top)) !important;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom)) !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
