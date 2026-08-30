@@ -1,0 +1,21 @@
+/* Bryan Command Center — dense, focused mission control. */
+html, body { background: #070a0d; }
+body {
+  background-image:
+    linear-gradient(rgba(94, 242, 194, .022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 217, 242, .018) 1px, transparent 1px),
+    radial-gradient(circle at 92% -10%, rgba(56, 217, 242, .08), transparent 32rem);
+  background-size: 40px 40px, 40px 40px, auto;
+}
+
+:focus-visible { outline: 2px solid #38d9f2; outline-offset: 3px; }
+button, a, input, select, textarea, [role="button"] { -webkit-tap-highlight-color: transparent; }
+
+@media (max-width: 640px) {
+  input, select, textarea { font-size: 16px !important; }
+  button, [role="button"], nav a { min-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
